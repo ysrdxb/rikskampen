@@ -1,0 +1,72 @@
+<div class="box bestseller">
+	<div class="product_inner content">
+  <div class="box-heading"><span class="heading_inner">{{ heading_title }}</span></div>
+  <div class="box-content">
+		{% set sliderFor = 5 %}
+		{% set productCount = products|length %}
+	{% if productCount >= sliderFor %}
+		<div class="customNavigation">
+			<a class="fa prev fa-arrow-left">&nbsp;</a>
+			<a class="fa next fa-arrow-right">&nbsp;</a>
+		</div>	
+	{% endif %}
+	
+	<div class="box-product {% if productCount >= sliderFor %}product-carousel{% else %} productbox-grid{% endif %}" id="{% if productCount >= sliderFor %}bestseller-carousel{% else %}bestseller-grid{% endif %}">
+  {% for product in products %}
+  <div class="{% if productCount >= sliderFor %}slider-item{% else %}product-items{% endif %}">
+    <div class="product-block product-thumb transition">
+	  <div class="product-block-inner">	  	
+		<div class="image">
+			<a href="{{ product.href }} "><img src="{{ product.thumb }} " alt="{{ product.name }} " title="{{ product.name }} " class="img-responsive" />
+			 {% if not product.special %}        
+			  {% else %}   
+			<span class="saleicon sale">Sale</span>  
+           {% endif %}
+       		</a>
+			{#{% if product.rating %}#}
+       				 <div class="rating">
+         			 {% for i in 1..5 %}
+         			 {% if product.rating < i %}
+         			 <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+          		     {% else %}
+          			 <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
+          			 {% endif %}
+          			 {% endfor %}
+       				 </div>
+        		{#{% endif %}#}
+	       
+		</div>
+		<div class="caption">
+						<h4><a href="{{ product.href }} ">{{ product.name }} </a></h4>
+				{# <p class="desc">{{ product.description }}</p> #}
+				{% if product.price %}
+        			<p class="price">
+       			    {% if not product.special %}
+          			{{ product.price }}
+         			{% else %}
+         			<span class="price-new">{{ product.special }}</span> <span class="price-old">{{ product.price }}</span>
+			        {% endif %}
+  		            {% if product.tax %}
+		            <span class="price-tax">{{ text_tax }} {{ product.tax }}</span>
+          			{% endif %}
+			        </p>
+	            {% endif %}	
+	             <button type="button" class="cart_button" onclick="cart.add('{{ product.product_id }} ');"><span class="hidden-sm hidden-md">{{ button_cart }}</span></button>			
+			</div>
+      	<div class="product_blockhover"> 	    
+			<div class="button-group">
+				<button class="wishlist_button" type="button" data-toggle="tooltip" title="{{ button_wishlist }} " onclick="wishlist.add('{{ product.product_id }} ');"><i class="fa fa-heart"></i></button>
+				<button type="button" class="cart_button" onclick="cart.add('{{ product.product_id }} ');">{{ button_cart }} </button>
+				<button class="compare_button" type="button" data-toggle="tooltip" title="{{ button_compare }} " onclick="compare.add('{{ product.product_id }} ');"><i class="fa fa-exchange"></i></button>
+			</div>
+	  	</div>
+  	</div>
+	</div>
+</div>
+  
+ {% endfor %}
+</div>
+  </div>
+</div>
+</div>
+<span class="bestseller_default_width" style="display:none; visibility:hidden"></span>

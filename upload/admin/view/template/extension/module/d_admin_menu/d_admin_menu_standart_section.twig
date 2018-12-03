@@ -1,0 +1,94 @@
+<div class="well well-sm">
+  <div style="float: right;">
+    <button type="button" id="button-collapse-standart" class="btn btn-sm" >Collapse All</button>
+    <button type="button" id="button-expand-standart" class="btn btn-sm">Expand All</button>
+  </div>
+  <button type="button" id="button-restore-standart" class="btn btn-sm btn-success" >Restore default</button>
+</div>
+
+{% if (not standart_menu_data) %}
+<ol class="dd-list dd-nodrag">
+</ol>
+{% endif %}
+
+
+{% if (standart_menu_data) %}
+<ol class="dd-list dd-nodrag">
+
+      <!-- first level -->
+      {% for smd_first_item in standart_menu_data %}
+      <li id="dd_{{ smd_first_item['id'] }}" class="dd-item dd-nodrag" data-id="{{ smd_first_item['id'] }}">
+
+        <div class="dd-handle form-inline">
+          {% if (smd_first_item['icon'] == '>>') %}
+          <span class="item-supericon">»</span>
+          {% else %}
+          <span class="item-supericon fa {{ smd_first_item['icon'] }} fa-lg"></span>
+          {% endif %}
+          <span class="heading-title">{{ smd_first_item['name'] }}</span>
+          <span class="item-icons dd-nodrag">
+            {% if 'is_visible' in smd_first_item|keys %}
+            <input type="checkbox" name="standart-menu[{{ smd_first_item['id'] }}][visibility]" value="{{ smd_first_item['is_visible'] == 1 ? 1 : 0 }}" data-size="mini" data-label-text="Display" data-bs="true" {{ smd_first_item['is_visible'] == 1 ? 'checked="checked"' : '' }}>
+            {% endif %}
+          </span>
+        </div>
+
+
+        <!-- second level -->
+        {% if (smd_first_item['children']) %}
+        <ol class="dd-list dd-nodrag">
+        {% for smd_second_item in smd_first_item['children'] %}
+
+        <li id="dd_{{ smd_second_item['id'] }}" class="dd-item dd-nodrag" data-id="{{ smd_second_item['id'] }}">
+
+          <div class="dd-handle form-inline">
+            {% if (smd_second_item['icon'] == '>>') %}
+            <span class="item-supericon">»</span>
+            {% else %}
+            <span class="item-supericon fa {{ smd_second_item['icon'] }} fa-lg"></span>
+            {% endif %}
+            <span class="heading-title">{{ smd_second_item['name'] }}</span>
+            <span class="item-icons dd-nodrag">
+              {% if 'is_visible' in smd_second_item|keys %}
+              <input type="checkbox" name="standart-menu[{{ smd_second_item['id'] }}][visibility]" value="{{ smd_second_item['is_visible'] == 1 ? 1 : 0 }}" data-size="mini" data-label-text="Display" data-bs="true" {{ smd_second_item['is_visible'] == 1 ? 'checked="checked"' : '' }}>
+              {% endif %}
+            </span>
+          </div>
+
+
+          <!-- third level -->
+          {% if (smd_second_item['children']) %}
+          <ol class="dd-list dd-nodrag">
+          {% for smd_third_item in smd_second_item['children'] %}
+          <li id="dd_{{ smd_third_item['id'] }}" class="dd-item dd-nodrag" data-id="{{ smd_third_item['id'] }}">
+
+            <div class="dd-handle form-inline">
+              {% if (smd_third_item['icon'] == '>>') %}
+              <span class="item-supericon">»</span>
+              {% else %}
+              <span class="item-supericon fa {{ smd_third_item['icon'] }} fa-lg"></span>
+              {% endif %}
+              <span class="heading-title">{{ smd_third_item['name'] }}</span>
+              <span class="item-icons dd-nodrag">
+                {% if 'is_visible' in smd_third_item|keys %}
+                <input type="checkbox" name="standart-menu[{{ smd_third_item['id'] }}][visibility]" value="{{ smd_third_item['is_visible'] == 1 ? 1 : 0 }}" data-size="mini" data-label-text="Display" data-bs="true" {{ smd_third_item['is_visible'] == 1 ? 'checked="checked"' : '' }}>
+                {% endif %}
+              </span>
+            </div>
+          </li>
+          {% endfor %}
+          </ol>
+          {% endif %}
+
+
+        </li>
+        {% endfor %}
+        </ol>
+        {% endif %}
+
+
+      </li>
+      {% endfor %}
+
+</ol>
+{% endif %}

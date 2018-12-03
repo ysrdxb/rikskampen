@@ -1,0 +1,26 @@
+<div class="main-slider">
+
+  <div id="slideshow{{ module }}" class="owl-carousel" style="opacity: 1;">
+    {% for banner in banners %}
+      <div class="item">{% if banner.link %}<a href="{{ banner.link }}"><img src="{{ banner.image }}" alt="{{ banner.title }}" class="img-responsive" /></a>{% else %}<img src="{{ banner.image }}" alt="{{ banner.title }}" class="img-responsive" />{% endif %}</div>
+      {% endfor %} 
+  </div>
+</div>
+<script type="text/javascript">
+$('#slideshow{{ module }}').owlCarousel({
+  items: 3,
+  autoPlay: 5000,
+  singleItem: true,
+  navigation: true,
+  navigationText: ['<i class="fa fa-arrow-left"></i><div class="left-wrap"></div>', '<i class="fa fa-arrow-right"></i><div class="right-wrap"></div>'],
+  pagination: true,
+  transitionStyle: 'fade'
+});
+</script>
+
+<script type="text/javascript">
+  // Can also be used with $(document).ready()
+  $(window).load(function() {   
+    $("#spinner").fadeOut("slow");
+  }); 
+</script>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+    <name>d_admin_menu</name>
+    <code>d_admin_menu</code>
+    <description>Admin Menu</description>
+    <version>1.0.0</version>
+    <author>Dreamwention Team</author>
+    <link>http://www.dreamvention.ee/</link>
+
+        <!-- 201-220 -->
+        <file path="admin/view/template/common/column_left.tpl">
+            <operation error="skip">
+                <search><![CDATA[<nav id="column-left"><?php echo $profile; ?><?php echo $menu; ?><?php echo $stats; ?></nav>]]></search>
+                <add position="replace"><![CDATA[
+                    <nav id="column-left"><?php echo $profile; ?><?php echo $menu; ?><?php echo (isset($d_admin_menu)) ? $d_admin_menu : ''; ?><?php echo $stats; ?></nav>
+                ]]></add>
+            </operation>
+        </file>
+
+        <!-- 230 -->
+        <file path="admin/view/template/common/column_left.tpl">
+            <operation error="skip">
+                <search><![CDATA[<div id="stats">]]></search>
+                <add position="before"><![CDATA[
+                    <?php echo (isset($d_admin_menu)) ? $d_admin_menu : ''; ?>
+                ]]></add>
+            </operation>
+        </file>
+
+        <!-- OC 3.x compatibility START -->
+        <file path="admin/view/template/common/column_left.twig">
+            <operation error="skip">
+                <search><![CDATA[<div id="stats">]]></search>
+                <add position="before"><![CDATA[
+                    {{ d_admin_menu }}
+                ]]></add>
+            </operation>
+        </file>
+        <!-- OC 3.x compatibility END -->
+
+</modification>

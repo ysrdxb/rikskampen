@@ -1,0 +1,56 @@
+<div class="box">
+	{% set sliderFor = 2 %}
+	{% set blogCount = blogs|length %}
+	
+ <div class="box-heading">{{ heading_title }}</div>
+  <div class="box-content">
+    <div class="box-product {% if blogCount >= sliderFor %} owl-carousel blogcarousel {% else %} productbox-grid{% endif %}" id="{% if blogCount >= sliderFor %}blog-carousel{% else %} blog-grid{% endif %}">
+    {% for blog in blogs %} 
+    <div class="{% if blogCount >= sliderFor %}blog-item{% else %} product-items{% endif %}">
+	<div class="product-block">
+     {% if blog.image %} 
+	  <div class="blog-left">
+	  <div class="blog-image">
+	  <img src="{{ blog.image }}" alt="{{ heading_title }}" title="{{ heading_title }}" class="img-thumbnail" />
+	  <div class="post-image-hover"> </div>
+<p class="post_hover"><a class="icon zoom" title="Click to view Full Image " href="{{ blog.image }}" data-lightbox="example-set"><i class="fa fa-search-plus"></i> </a><a class="icon readmore_link" title="Click to view Read More " href="{{ blog.href }}"><i class="fa fa-link"></i></a></p>
+	  </div>
+	  </div>
+	 {% endif %} 	
+	 <div class="blog-right">  
+	  <h4><a href="{{ blog.href }}">{{ blog.title }}</a> </h4>
+      <div class="blog-desc"> {{ blog.description }}  </div> 
+	  <div class="view-blog">
+	  	<div class="write-comment"> <a href="{{ blog.href }}"> {{ blog.total_comments }}  {{ entry_comment }}</a> </div>
+		<div class="read-more"> <a href="{{ blog.href }}"> <i class="fa fa-link"></i> {{ text_read_more }}</a> </div>
+	  </div>
+      <div class="date-time"> <i class="fa fa-calendar"></i>  {{ blog.date_added }}</div>
+	 </div> 
+    </div>
+	</div>
+     {% endfor %} 	 
+   
+  </div>
+   <div class="buttons text-center">
+      <button type="button" onclick="location='{{ all_blogs }} ';" class="btn btn-primary">{{ button_all_blogs }}</button>
+    </div>
+  </div>
+ 
+</div>
+<span class="blog_default_width" style="display:none; visibility:hidden"></span>
+
+<script type="text/javascript"><!--
+
+$(document).ready(function(){
+$('.blogcarousel').owlCarousel({
+		items: 2,
+		autoPlay: 10000,
+		singleItem: false,
+		navigation: false,
+		navigationText: ['<i class="fa fa-chevron-left fa-5x"></i>', '<i class="fa fa-chevron-right fa-5x"></i>'],
+		pagination: true,
+		itemsDesktop : [1000,2],
+		itemsDesktopSmall :	[979,2]
+	});
+});	
+--></script>

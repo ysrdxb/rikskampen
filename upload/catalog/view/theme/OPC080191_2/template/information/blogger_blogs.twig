@@ -1,0 +1,65 @@
+{{ header }} 
+<div class="container">
+  <ul class="breadcrumb">
+    {% for breadcrumb in breadcrumbs %} 
+   <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+ {% endfor %}  
+     
+  </ul>
+  <div class="row">{{ column_left }} 
+     {% if column_left and column_right %}
+    {% set class = 'col-sm-6' %}
+    {% elseif column_left or column_right %}
+    {% set class = 'col-sm-9' %}
+    {% else %}
+    {% set class = 'col-sm-12' %}
+    {% endif %}
+   
+    <div id="content" class="{{ class }}  all-blog">{{ content_top }} 
+      <h1>{{ text_blogs }}</h1>
+      {% if blogs %} 
+      {% for blog in blogs %} 
+      <div class="panel-default" style="padding-top: 5px;">
+        {#<h4>{{ blog.name }}</h4>#}
+        {% if blog.blog_data %} 
+        {% for topic in blog.blog_data %} 
+        <div class="panel panel-default">
+          <div class="panel-body">
+      
+       {% if topic.image %} 
+       <div class="blog-left-content">
+      <div class="blog-image">
+        <img src="{{ topic.image }}" alt="{{ heading_title }}" title="{{ heading_title }}" class="img-thumbnail" />
+      <div class="post-image-hover"> </div>
+<p class="post_hover"><a class="icon zoom" title="Click to view Full Image " href="{{ topic.image }}" data-lightbox="example-set"></a><a class="icon readmore_link" title="Click to view Read More " href="{{ topic.href }}"></a></p>
+        
+        </div>
+      </div>
+      {% endif %} 
+
+      <div class="blog_headtop">
+        <div class="blog_title">
+          <a href="{{ topic.href }}">{{ topic.title }}</a>
+        </div>
+      </div>
+            
+      <div class="blog-desc">{{ topic.description }}<span class="read-more"><a href="{{ topic.href }}">{{ text_read_more }}</a></span>  </div>
+      <div class="write-comment"> <a href="{{ topic.href }}">{{ topic.total_comments }}  {{ entry_comment }}</a> </div>
+  
+      <div class="blog-date"> <i class="fa fa-calender-o"></i>  {{ topic.date_added }}</div>
+          </div>
+        </div>
+        {% endfor %}
+        
+         {% else %}   
+        <div class="panel-body text-center">{{ text_no_blogs }}</div>
+        {% endif %} 
+        </div>
+         {% endfor %}
+       {% else %}   
+      <div class="panel-body text-center">{{ text_no_blogs }}</div>
+               {% endif %} 
+    {{ content_bottom }}</div>
+  {{ column_right }}</div>
+</div>
+{{ footer }} 

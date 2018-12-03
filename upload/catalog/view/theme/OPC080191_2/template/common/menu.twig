@@ -1,0 +1,108 @@
+<nav class="nav-container" role="navigation">
+<div class="nav-inner container">
+<!-- ======= Menu Code START ========= -->
+{% if categories %}
+<!-- Opencart 3 level Category Menu-->
+<div id="menu" class="main-menu" style="display: block;">
+	<div class="navbar-header collapsed" data-toggle="collapse" data-target=".navbar-ex1-collapse"><span id="category" class="visible-xs">Menu</span>
+    </div>
+
+ 
+      <ul class="nav navbar-nav">
+	  	<li class="top_level"><a href="{{ home }}">{{ name }}</a></li>
+    	{% for category in categories %}
+        {% if category.children %}
+			<li class="top_level dropdown"><a href="{{ category.href }}">{{ category.name }}</a>
+
+			<div class="dropdown-menu megamenu column{{ category.column }}">
+      <div class="dropdown-inner">
+			  {% for children in category.children|batch(category.children|length / category.column|round(1, 'ceil')) %}
+				<ul class="list-unstyled childs_1">
+                {% for child in children %}
+					<!-- 2 Level Sub Categories START -->
+					{% if child.childs %}
+					  <li class="dropdown"><a href="{{ child.href }}">{{ child.name }}</a>
+
+						  <div class="dropdown-menu">
+			              <div class="dropdown-inner">
+			              {% for childs_col in child.childs|batch(child.childs|length / child.column|round(1, 'ceil')) %}
+							<ul class="list-unstyled childs_2">
+							  {% for childs_2 in childs_col %}
+								<li><a href="{{ childs_2.href }}">{{ childs_2.name }}</a></li>
+							  {% endfor %}
+							</ul>
+						  {% endfor %}
+						  </div>
+						  </div>
+
+					  </li>
+					{% else %}
+					  <li><a href="{{ child.href }}">{{ child.name }}</a></li>
+					{% endif %}
+					<!-- 2 Level Sub Categories END -->
+                {% endfor %}
+               
+              
+			    </ul>
+              {% endfor %}
+            </div>
+			</div>
+
+			</li>
+        {% else %}
+			<li class="top_level"><a href="{{ category.href }}">{{ category.name }}</a></li>
+       {% endif %}
+        {% endfor %}
+<!--         <li> <a href="{{ all_blogs }}">{{ text_blog }}</a></li> -->
+  </ul>
+  
+</div>
+{% endif %}
+
+
+{% if categories %}
+<!-- Opencart 3 level Category Menu-->
+<div id="res-menu" class="main-menu nav-container1">
+<div class="nav-responsive"><span>Menu</span><div class="expandable"></div></div>
+ 
+       <ul class="main-navigation">
+       
+                    {% for category in categories %}
+                    <li>
+                      {% if category.category_id == category_id %}
+                      <a href="{{ category.href }}" class="activSub">{{ category.name }} </a>
+                      {% else %}
+                      <a href="{{ category.href }}">{{ category.name }}</a>
+                       {% endif %}
+                      {% if category.children %}
+                      <ul class="">
+                        {% for child in category.children %}
+                        <li>
+                          {% if child.category_id == child_id %}
+                          <a href="{{ child.href }}" class="activSub">{{ child.name }}</a>
+                           {% else %}
+                          <a href="{{ child.href }}">{{ child.name }}</a>
+                          {% endif %}
+                        </li>
+                        {% endfor %}
+                      </ul>
+                      {% endif %}
+                    </li>
+                    {% endfor %}
+
+             <li> <a href="{{ all_blogs }}">{{ text_blog }}</a></li>
+
+      </ul> 
+</div>
+{% endif %}
+
+
+
+
+
+</div>
+
+
+
+
+</nav>   

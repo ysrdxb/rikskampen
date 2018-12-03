@@ -1,0 +1,112 @@
+{
+    "codename": "d_admin_menu",
+    "version": "1.0.7",
+    "name": "Admin Menu",
+    "description": "Manage your Opencart admin menu to make it fit your needs",
+    "index": "extension/module/d_admin_menu",
+    "author": {
+        "name": "Dreamvention",
+        "email": "info@dreamvention.com",
+        "url": "https://dreamvention.com/"
+    },
+    "opencart_version": [
+        "2.0.1.0",
+        "2.0.1.1",
+        "2.0.2.0",
+        "2.0.3.1",
+        "2.1.0.1",
+        "2.1.0.2",
+        "2.2.0.0",
+        "2.3.0.0",
+        "2.3.0.1",
+        "2.3.0.2",
+        "3.0.0.0",
+        "3.0.1.1",
+        "3.0.1.2",
+        "3.0.2.0"
+    ],
+    "type": "module",
+    "license": {
+        "type": "free",
+        "url": "https://shopunity.net/licenses/free"
+    },
+    "install": {
+        "url": "extension/extension/module/install&extension=d_admin_menu"
+    },
+    "uninstall": {
+        "url": "extension/extension/module/uninstall&extension=d_admin_menu"
+    },
+    "support": {
+        "email": "support@dreamvention.com",
+        "url": "https://dreamvention.com/support"
+    },
+    "required": {
+        "d_opencart_patch": ">= 1.0.0",
+        "d_twig_manager": ">= 1.5.0",
+        "d_event_manager": ">= 1.1.2",
+        "d_simple_html_dom": ">= 1.0.4",
+        "d_bootstrap_extra": ">= 1.0.1",
+        "d_bootstrap_switch": ">= 3.3.5"
+    },
+    "files": [
+        "system/library/d_shopunity/extension/d_admin_menu.json",
+        "system/library/d_shopunity/install/d_admin_menu.xml",
+
+        "admin/controller/extension/module/d_admin_menu.php",
+        "admin/model/extension/module/d_admin_menu.php",
+        "admin/language/en-gb/extension/module/d_admin_menu.php",
+
+        "system/config/d_admin_menu/d_admin_menu_201.php",
+        "system/config/d_admin_menu/d_admin_menu_203.php",
+        "system/config/d_admin_menu/d_admin_menu_210.php",
+        "system/config/d_admin_menu/d_admin_menu_230.php",
+        "system/config/d_admin_menu/d_admin_menu_302.php"
+    ],
+    "dirs": [
+        "admin/view/javascript/d_admin_menu",
+        "admin/view/stylesheet/d_admin_menu",
+        "admin/view/template/extension/module/d_admin_menu"
+    ],
+    "changelog": [
+        {
+            "version": "1.0.7",
+            "change": "Add bootstrap styles"
+        },
+        {
+            "version": "1.0.6",
+            "change": "More responsive design"
+        },
+        {
+            "version": "1.0.5",
+            "change": "Fix some typos"
+        },
+        {
+            "version": "1.0.4",
+            "change": "Refactoring"
+        },
+        {
+            "version": "1.0.3",
+            "change": "Now you can add custom URL"
+        },
+        {
+            "version": "1.0.2",
+            "change": "Add custom route option"
+        },
+        {
+            "version": "1.0.1",
+            "change": "Add inheritance mode"
+        },
+        {
+            "version": "1.0.0",
+            "change": "Adaptation for 3.x"
+        },
+        {
+            "version": "0.1.0",
+            "change": "Made the rockets fly"
+        },
+        {
+            "version": "0.0.1",
+            "change": "Initial Commit"
+        }
+    ]
+}

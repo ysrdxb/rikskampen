@@ -1,0 +1,90 @@
+2018-12-03 20:01:20 - MOD: Modification Default
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 69
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 77
+LINE: 151
+LINE: 168
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 59
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 67
+LINE: 73
+FILE: system/library/template/template.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 18
+FILE: system/library/template/twig.php
+CODE: $loader = new \Twig_Loader_Filesystem(DIR_TEMPLATE);
+LINE: 19
+----------------------------------------------------------------
+MOD: d_admin_menu
+FILE: admin/view/template/common/column_left.twig
+CODE: <div id="stats">
+LINE: 36
+----------------------------------------------------------------
+MOD: d_opencart_patch
+FILE: admin/controller/user/user_permission.php
+CODE: $path[] = $file . '/*';
+LINE: 337
+CODE: $permission = substr($controller, 0, strrpos($controller, '.'));
+LINE: 353
+----------------------------------------------------------------
+2018-12-03 20:01:27 - MOD: Modification Default
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 69
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 77
+LINE: 151
+LINE: 168
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 59
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 67
+LINE: 73
+FILE: system/library/template/template.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 18
+FILE: system/library/template/twig.php
+CODE: $loader = new \Twig_Loader_Filesystem(DIR_TEMPLATE);
+LINE: 19
+----------------------------------------------------------------
+MOD: d_admin_menu
+FILE: admin/view/template/common/column_left.twig
+CODE: <div id="stats">
+LINE: 36
+----------------------------------------------------------------
+MOD: d_opencart_patch
+FILE: admin/controller/user/user_permission.php
+CODE: $path[] = $file . '/*';
+LINE: 337
+CODE: $permission = substr($controller, 0, strrpos($controller, '.'));
+LINE: 353
+----------------------------------------------------------------
+MOD: d_twig_manager
+CODE: $template = new Template($this->registry->get('config')->get('template_engine'));
+LINE: 118
+FILE: system/library/template.php
+CODE: public function __construct($adaptor) {
+LINE: 21
+CODE: $this->adaptor = new $class();
+LINE: 28
+CODE: private $data = array();
+LINE: 8
+CODE: public function __construct() {
+LINE: 10
+CODE: \Twig_Autoloader::register();
+LINE: 21
+CODE: $this->twig = new \Twig_Environment($loader, $config);
+LINE: 54
+FILE: catalog/controller/event/theme.php
+CODE: $twig = new \Twig_Environment($loader, $config);
+LINE: 26
+----------------------------------------------------------------
